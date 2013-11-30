@@ -19,9 +19,20 @@ public :
     int getInputEventCode() { return mCode ; }
     int getInputEventValue() { return mValue ; }
 
-    static const InputEvent SYNC_EVENT ; 
+    void format( struct input_event * );
+
+    static const InputEvent SYNC_EVENT ;
+
 };
 
-const InputEvent InputEvent::SYNC_EVENT = InputEvent( 0x0 , 0x2 , 0x0 );
+// static member
+const InputEvent InputEvent::SYNC_EVENT = InputEvent( 0x0 , 0x0 , 0x0 );
+
+void InputEvent::format( struct input_event *event )
+{
+    event->type = mType ;
+    event->code = mCode ;
+    event->value = mValue ; 
+}
 
 #endif /* _INPUTEVENT_H_ */

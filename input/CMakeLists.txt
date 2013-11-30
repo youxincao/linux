@@ -1,4 +1,3 @@
-ADD_EXECUTABLE(readInput InputEventTest)
+ADD_EXECUTABLE(readInput readEvent.c)
 
-SET(readInput readInput.c)
-SET(InputEventTest InputEventTest.cpp)
+ADD_EXECUTABLE(InputEventTest InputEventTest.cpp)
