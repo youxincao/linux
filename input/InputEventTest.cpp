@@ -3,6 +3,7 @@
 #include "InputEvent.hpp"
 #include "InputOperation.hpp"
 #include "TouchEvent.hpp"
+#include "MoveEvent.hpp"
 
 using namespace std;
 
@@ -35,6 +36,13 @@ int main(int argc, char *argv[])
     shared_ptr<InputOperation> op = touchEvent.generateOperation( fd ) ;
     op->execute() ;
 
+    sleep( 1);
+    
+    MoveEvent moveEvent( Position( 44 , 150  ) , Position( 180 , 150 ));
+    shared_ptr<InputOperation> moveOp = moveEvent.generateOperation( fd ) ;
+
+    moveOp->execute() ; 
+    
     close( fd );
     return 0;
 }
