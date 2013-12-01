@@ -21,12 +21,7 @@ public :
 
     void format( struct input_event * );
 
-    static const InputEvent SYNC_EVENT ;
-
 };
-
-// static member
-const InputEvent InputEvent::SYNC_EVENT = InputEvent( 0x0 , 0x0 , 0x0 );
 
 void InputEvent::format( struct input_event *event )
 {
