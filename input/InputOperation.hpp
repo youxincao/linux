@@ -37,7 +37,7 @@ void InputOperation::execute()
 {
     vector<InputEvent>::iterator iter ;
     for( iter = mEvents.begin() ; iter != mEvents.end() ; iter ++  )
-    {
+    {b
         InputEvent event = *iter ;
         struct input_event ev ;
         event.format( &ev );

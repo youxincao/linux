@@ -2,6 +2,7 @@
 
 #include "InputEvent.hpp"
 #include "InputOperation.hpp"
+#include "TouchEvent.hpp"
 
 using namespace std;
 
@@ -29,19 +30,11 @@ int main(int argc, char *argv[])
     {
         return -1 ; 
     }
-    
-    InputOperation operation( fd );
-    
-    operation.addInputEvent( InputEvent( 0x3 , 0x35 , 0x44 ) ) ;
-    operation.addInputEvent( InputEvent( 0x3 , 0x36 , 0x3b ) ) ;
-    operation.addInputEvent( InputEvent( 0x3 , 0x39 , 0x0  ) ) ;
-    operation.addInputEvent( InputEvent( 0x3 , 0x30 , 0x0  ) ) ;
-    operation.addInputEvent( InputEvent( 0x3 , 0x32 , 0x0  ) ) ;
-    operation.addInputEvent( InputEvent( 0x0 , 0x2  , 0x0  ) ) ;
-    operation.addInputEvent( InputEvent( 0x0 , 0x0  , 0x0  ) ) ;
-    operation.addInputEvent( InputEvent( 0x0 , 0x2  , 0x0  ) ) ;
-    operation.addInputEvent( InputEvent( 0x0 , 0x0  , 0x0  ) ) ;
-    operation.execute() ;
-   
+
+    TouchEvent touchEvent( Position( 62 , 88 ));
+    shared_ptr<InputOperation> op = touchEvent.generateOperation( fd ) ;
+    op->execute() ;
+
+    close( fd );
     return 0;
 }
