@@ -77,7 +77,8 @@ int main(int argc, char **argv)
     }
 
     // Initilie the send buf
-    for ( int i = 0  ;  i < gPacketSize ; ++i)
+    int i ;
+    for ( i = 0  ;  i < gPacketSize ; ++i)
     {
         gSendBuf[ i  ] = ( char ) i % 256 ; 
     }
@@ -86,11 +87,12 @@ int main(int argc, char **argv)
     // send a message
     if( status == 0 ) {
        
-		for (int i = 0; i < gPacketCount; ++i)
+		for ( i = 0; i < gPacketCount; ++i)
         {
-            for ( int i = 0  ;  i < gPacketSize ; ++i)
+            int j ; 
+            for ( j  = 0  ;  j < gPacketSize ; ++j)
             {
-                gSendBuf[ i  ] = ( char ) i % 256 ; 
+                gSendBuf[ j  ] = ( char ) j % 256 ; 
             }
             status = write(s, gSendBuf ,  gPacketSize );
             int redLen = read( s , gRecvBuf  , gPacketSize );            
