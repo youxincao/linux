@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 
 #include "InputEvent.hpp"
 #include "InputOperation.hpp"
@@ -25,13 +26,25 @@ int openInputDevice( int num )
 
 int main(int argc, char *argv[])
 {
+	if( argc != 2 )
+	{
+		fprintf( stderr , "Usage : TestMul  [sleeptime] \n" );
+		return -1 ;
+	}
+
     int screenFd = openInputDevice( 0 ) ;
 
     if ( screenFd < 0   )
     {
         return -1 ; 
     }
+	
+    int sleepTime = 3 ;
 
+	sleepTime == atoi( argv[1] );
+
+	printf( "[Debug]  sleep time is %d \n" ,  sleepTime );
+#if 0
     int sleepTime = 1 ;
     int count = 1 ; 
    
@@ -39,6 +52,7 @@ int main(int argc, char *argv[])
     scanf( "%d" , &count );
     printf("Input Sleep Time : " );
     scanf( "%d" , &sleepTime );
+#endif 
 
    
     TouchEvent touchEvent1( Position( 62 , 88 ));
@@ -60,9 +74,9 @@ int main(int argc, char *argv[])
     MoveEvent moveLeftEvent( Position( 180 , 120  ) , Position( 44 , 120 ));
     shared_ptr<InputOperation> moveLeftOp = moveLeftEvent.generateOperation( screenFd ) ;
 
-    for (int i = 0; i < count; ++i)
+    // for (int i = 0; i < count; ++i)
+	while( 1  )
     {
-        printf("The count %d \n" , i );
 
         for( int j = 0 ; j < 3 ;  j ++ )
         {

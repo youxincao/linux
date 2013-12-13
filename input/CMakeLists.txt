@@ -9,3 +9,5 @@ ADD_EXECUTABLE(PowerKeyTest PowerKeyTest.cpp)
 ADD_EXECUTABLE(TestOne TestOne.cpp)
 
 ADD_EXECUTABLE(TestMul TestMul.cpp)
+
+ADD_EXECUTABLE(sendevent sendevent.cpp)
